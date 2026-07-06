@@ -536,7 +536,7 @@ function Library:Init(RootName)
 					Parent = ButtonHolder,
 					Size = UDim2.new(1, 0, 1, 0),
 					BackgroundTransparency = 1,
-					Text = TextBoxName,
+					Text = ButtonName,
 					TextScaled = true,
 					TextColor3 = Color3.new(1, 1, 1),
 					FontFace = Fonts.Big,
