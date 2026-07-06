@@ -523,6 +523,57 @@ function Library:Init(RootName)
 			return SectionTree
 		end
 
+		-- Button
+			function SectionTree:Button(ButtonName, Callback)
+				local ButtonHolder = _("Frame", {
+					Parent = SectionHolder,
+					BackgroundTransparency = 0.95,
+					BackgroundColor3 = Color3.new(1, 1, 1)
+				})
+				Round(ButtonHolder, 0.15)
+				local Stroke = Str(ButtonHolder):Size(1):Trans(0.9):Col(Color3.new(1, 1, 1)):Mode("Round")
+				table.insert(SectionItems, ButtonHolder)
+				UpdateSize()
+
+				local Button = _("TextButton", {
+					Parent = ButtonHolder,
+					Size = UDim2.new(1, 0, 1, 0),
+					BackgroundTransparency = 1,
+					Text = TextBoxName,
+					TextScaled = true,
+					TextColor3 = Color3.new(1, 1, 1),
+					FontFace = Fonts.Big,
+					TextXAlignment = Enum.TextXAlignment.Left,
+					TextTransparency = 0.4
+				})
+				Pad(Button):T(0.25):B(0.25):L(0, 5)
+
+				local Hovering = false
+
+				Button.MouseEnter:Connect(function()
+					Hovering = true
+					Stroke:Trans(0.85)
+				end)
+
+				Button.MouseLeave:Connect(function()
+					Hovering = false
+					Stroke:Trans(0.95)
+				end)
+
+				Button.MouseButton1Down:Connect(function()
+					Callback()
+					Stroke:Trans(0.7)
+				end)
+
+				Button.MouseButton1Up:Connect(function()
+					Callback()
+					Stroke:Trans(Hovering and 0.85 or 0.95)
+				end)
+			end
+
+			return SectionTree
+		end
+
 		return TabTree
 	end
 
