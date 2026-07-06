@@ -520,10 +520,7 @@ function Library:Init(RootName)
 				end)
 			end
 
-			return SectionTree
-		end
-
-		-- Button
+			-- Button
 			function SectionTree:Button(ButtonName, Callback)
 				local ButtonHolder = _("Frame", {
 					Parent = SectionHolder,
